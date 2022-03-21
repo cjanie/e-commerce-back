@@ -1,9 +1,9 @@
-package com.oc_p8.ecommerce.adapters.secondary.gatewaysImpls;
+package com.oc_p8.ecommerce.ecommerce.adapters.secondary.gatewaysImpls;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.oc_p8.ecommerce.businessLogic.gateways.StockGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.gateways.StockGateway;
 
 public class InMemoryStockGateway implements StockGateway {
 

@@ -1,13 +1,13 @@
-package com.oc_p8.ecommerce.adapters.primary.controllers;
+package com.oc_p8.ecommerce.ecommerce.adapters.primary.controllers;
 
-import com.oc_p8.ecommerce.adapters.secondary.gatewaysImpls.InMemoryStockGateway;
-import com.oc_p8.ecommerce.businessLogic.entities.Order;
-import com.oc_p8.ecommerce.businessLogic.exceptions.ClientMissingInfoException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.EmptyCartException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.NotInStockException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.PaymentMissingAcceptanceException;
-import com.oc_p8.ecommerce.businessLogic.useCases.CheckInStockUseCase;
-import com.oc_p8.ecommerce.businessLogic.useCases.SubmitOrderUseCase;
+import com.oc_p8.ecommerce.ecommerce.adapters.secondary.gatewaysImpls.InMemoryStockGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.entities.Order;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.ClientMissingInfoException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.EmptyCartException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.NotInStockException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PaymentMissingAcceptanceException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.useCases.CheckInStockUseCase;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.useCases.SubmitOrderUseCase;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,21 +1,20 @@
 package com.oc_p8.ecommerce;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 
-import com.oc_p8.ecommerce.adapters.secondary.gatewaysImpls.InMemoryStockGateway;
-import com.oc_p8.ecommerce.businessLogic.entities.Client;
-import com.oc_p8.ecommerce.businessLogic.entities.Order;
-import com.oc_p8.ecommerce.businessLogic.enums.OrderState;
-import com.oc_p8.ecommerce.businessLogic.enums.PaymentStatus;
-import com.oc_p8.ecommerce.businessLogic.exceptions.ClientMissingInfoException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.EmptyCartException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.NotInStockException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.PaymentMissingAcceptanceException;
-import com.oc_p8.ecommerce.businessLogic.useCases.CheckInStockUseCase;
-import com.oc_p8.ecommerce.businessLogic.useCases.SubmitOrderUseCase;
+import com.oc_p8.ecommerce.ecommerce.adapters.secondary.gatewaysImpls.InMemoryStockGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.entities.Client;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.entities.Order;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.enums.OrderState;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.enums.PaymentStatus;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.ClientMissingInfoException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.EmptyCartException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.NotInStockException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PaymentMissingAcceptanceException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.useCases.CheckInStockUseCase;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.useCases.SubmitOrderUseCase;
 
 import org.junit.jupiter.api.Test;
 

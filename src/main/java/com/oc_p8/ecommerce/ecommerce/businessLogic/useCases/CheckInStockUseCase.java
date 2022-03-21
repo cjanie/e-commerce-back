@@ -1,8 +1,8 @@
-package com.oc_p8.ecommerce.businessLogic.useCases;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.useCases;
 
 import java.util.List;
 
-import com.oc_p8.ecommerce.businessLogic.gateways.StockGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.gateways.StockGateway;
 
 public class CheckInStockUseCase {
     private StockGateway stockGateway;

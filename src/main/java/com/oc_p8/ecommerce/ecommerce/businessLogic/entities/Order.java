@@ -1,10 +1,10 @@
-package com.oc_p8.ecommerce.businessLogic.entities;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.oc_p8.ecommerce.businessLogic.enums.OrderState;
-import com.oc_p8.ecommerce.businessLogic.enums.PaymentStatus;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.enums.OrderState;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.enums.PaymentStatus;
 
 public class Order {
 

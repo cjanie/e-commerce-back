@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.businessLogic.entities;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.entities;
 
 public class Client {
 

@@ -1,11 +1,11 @@
-package com.oc_p8.ecommerce.businessLogic.useCases;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.useCases;
 
-import com.oc_p8.ecommerce.businessLogic.entities.Order;
-import com.oc_p8.ecommerce.businessLogic.enums.OrderState;
-import com.oc_p8.ecommerce.businessLogic.exceptions.ClientMissingInfoException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.EmptyCartException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.NotInStockException;
-import com.oc_p8.ecommerce.businessLogic.exceptions.PaymentMissingAcceptanceException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.entities.Order;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.enums.OrderState;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.ClientMissingInfoException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.EmptyCartException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.NotInStockException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PaymentMissingAcceptanceException;
 
 public class SubmitOrderUseCase {
     private CheckInStockUseCase checkInStockUseCase;
