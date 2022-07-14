@@ -4,15 +4,8 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 
 public class OrderReady extends DecoratorOrderInProcess {
 
-    private Order order;
-    private String assignee;
-
     public OrderReady(Order order, String assignee) {
-        this.order = order;
-        this.assignee = assignee;
-        this.id = order.getId();
-        this.client = order.getClient();
-        this.cart = order.getCart();
+        super(order, assignee);
     }
 
     @Override
