@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce;
+package com.oc_p8.ecommerce.ecommerce;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

@@ -1,9 +1,9 @@
-package com.oc_p8.ecommerce.process.businessLogic.entities;
+package com.oc_p8.ecommerce.ecommerce.process.businessLogic.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.oc_p8.ecommerce.process.businessLogic.enums.OrderState;
+import com.oc_p8.ecommerce.ecommerce.process.businessLogic.enums.OrderState;
 
 public class Order {
     
