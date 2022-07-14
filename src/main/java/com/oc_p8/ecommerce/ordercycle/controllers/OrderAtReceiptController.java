@@ -28,7 +28,6 @@ public class OrderAtReceiptController {
             return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
 
         } catch (PersistanceException e) {
-            e.printStackTrace();
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.FAILED_DEPENDENCY);
         }
 

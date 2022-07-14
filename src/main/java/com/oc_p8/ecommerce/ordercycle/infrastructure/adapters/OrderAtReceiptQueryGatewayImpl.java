@@ -34,7 +34,7 @@ public class OrderAtReceiptQueryGatewayImpl implements OrderAtReceiptQueryGatewa
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new PersistanceException();
+            throw new PersistanceException(e.getClass().getName() + " " + e.getMessage());
         }
         return orders;
     }
