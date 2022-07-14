@@ -3,6 +3,7 @@ package com.oc_p8.ecommerce.ordercycle.businesslogic.usecases;
 import java.util.List;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.OrderAtReceiptQueryGateway;
 
 public class GetOrdersAtReceiptUseCase {
@@ -13,7 +14,7 @@ public class GetOrdersAtReceiptUseCase {
         this.queryGateway = queryGateway;
     }
 
-    public List<Order> handle() {
+    public List<Order> handle() throws PersistanceException {
         return this.queryGateway.getOrdersWhereStateIsAtReceipt();
     }
 }

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.OrderAtReceiptQueryGateway;
 
 class InMemoryOrderAtReceiptQueryGatewayImpl implements OrderAtReceiptQueryGateway {
@@ -33,21 +34,21 @@ public class GetOrdersAtReceiptUseCaseTests {
     // Clean Archi with In Memory Gateways impl
 
     @Test
-    public void returnsOrdersWhenThereAreSomeAtReceipt() {
+    public void returnsOrdersWhenThereAreSomeAtReceipt() throws PersistanceException {
         InMemoryOrderAtReceiptQueryGatewayImpl queryGateway = new InMemoryOrderAtReceiptQueryGatewayImpl();
         queryGateway.setOrders(Arrays.asList(new OrderAtReceipt(), new OrderAtReceipt()));
         assertEquals(2, new GetOrdersAtReceiptUseCase(queryGateway).handle().size());
     }
 
     @Test
-    public void isEmptyWhenNothingAtReceipt() {
+    public void isEmptyWhenNothingAtReceipt() throws PersistanceException {
         assertEquals(0, new GetOrdersAtReceiptUseCase(new InMemoryOrderAtReceiptQueryGatewayImpl()).handle().size());
     }
 
     // Requirement
 
     @Test
-    public void returnsOrdersWhereOrderStateIsAtReceipt() {
+    public void returnsOrdersWhereOrderStateIsAtReceipt() throws PersistanceException {
         InMemoryOrderAtReceiptQueryGatewayImpl queryGateway = new InMemoryOrderAtReceiptQueryGatewayImpl();
         queryGateway.setOrders(Arrays.asList(new OrderAtReceipt()));
         assertEquals(OrderState.RECEIPT, new GetOrdersAtReceiptUseCase(queryGateway).handle().get(0).state());

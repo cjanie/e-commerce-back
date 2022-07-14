@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ordercycle.infrastructure;
+package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
