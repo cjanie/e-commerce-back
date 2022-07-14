@@ -11,6 +11,9 @@ class ConnectionManagerSQL {
     private String url = "jdbc:mysql://localhost:3306/order_cycle?serverTimezone=UTC";
     private String userName = "root";
     private String password = "root3264restController";
+    // Command Line: % /usr/local/mysql/bin/mysql -uroot -proot3264restController
+    // SHOW DATABASES
+    // SHOW TABLES FROM order_cycle
 
     private Connection connection;
 
