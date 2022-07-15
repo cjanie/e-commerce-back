@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.enums.OrderState;
 
 public class OrderQueryDAO {
 
-    private String request = "SELECT * FROM order WHERE order.state =?";
+    private String request = "SELECT id, client_first_name, client_last_name FROM orders WHERE state = ?;";
 
     public List<OrderQueryDTO> findOrdersByState(OrderState state) throws SQLException {
         List<OrderQueryDTO> orders = new ArrayList<>();
 
         PreparedStatement ps = this.getConnection().prepareStatement(request);
-        ps.setString(1, state.toString());
+        ps.setInt(1, state.ordinal());
 
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {

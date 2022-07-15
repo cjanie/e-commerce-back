@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters;
+package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,11 +8,11 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Cart;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Client;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.OrderAtReceiptQueryGateway;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderAtReceiptQueryGateway;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.enums.OrderState;
 
 public class OrderAtReceiptQueryGatewayImpl implements OrderAtReceiptQueryGateway {
 

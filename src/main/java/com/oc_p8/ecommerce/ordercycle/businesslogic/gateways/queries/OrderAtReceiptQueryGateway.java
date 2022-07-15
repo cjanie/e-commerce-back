@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ordercycle.businesslogic.gateways;
+package com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries;
 
 import java.util.List;
 
