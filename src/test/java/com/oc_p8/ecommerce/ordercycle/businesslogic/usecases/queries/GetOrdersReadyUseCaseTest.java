@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ordercycle.businesslogic.usecases;
+package com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +13,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.OrderReadyQueryGateway;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderReadyQueryGateway;
 
 class InMemoryOrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
 

@@ -1,9 +1,9 @@
-package com.oc_p8.ecommerce.ordercycle.businesslogic.usecases;
+package com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries;
 
 import java.util.List;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.OrderReadyQueryGateway;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderReadyQueryGateway;
 
 public class GetOrdersReadyUseCase {
     private OrderReadyQueryGateway queryGateway;

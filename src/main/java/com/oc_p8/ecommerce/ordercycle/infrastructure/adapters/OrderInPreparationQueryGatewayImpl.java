@@ -9,7 +9,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Client;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.OrderInPreparationQueryGateway;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderInPreparationQueryGateway;
 
 public class OrderInPreparationQueryGatewayImpl implements OrderInPreparationQueryGateway {
 

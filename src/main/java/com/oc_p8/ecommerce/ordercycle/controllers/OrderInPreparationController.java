@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.GetOrdersInPreparationUseCase;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrdersInPreparationUseCase;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.OrderInPreparationQueryGatewayImpl;
 
 @RestController
