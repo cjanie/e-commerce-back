@@ -1,5 +1,6 @@
 package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,32 +11,33 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderReadyQueryGateway;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
 
 public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
 
-    private List<Order> orders;
+    OrderQueryDAO dao;
 
-    public OrderReadyQueryGatewayImpl() {
-        this.orders = new ArrayList<>();
-        Order order = new OrderAtReceipt();
-        order.setId(3L);
-        Client client = new Client();
-        client.setFirstName("Jojo");
-        client.setLastName("Tronchon");
-        order.setClient(client);
-        Cart cart = new Cart();
-        cart.getItems().addAll(Arrays.asList("item1", "item2"));
-        order.setCart(cart);
-        order = new OrderInPreparation(order, "Jojo");
-        order = new OrderReady(order, "Jojo");
+    public OrderReadyQueryGatewayImpl(OrderQueryDAO dao) {
+        this.dao = dao;
 
-        orders.add(order);
     }
 
     @Override
-    public List<Order> getOrdersWhereStateIsReady() {
-        return this.orders;
+    public List<Order> getOrdersWhereStateIsReady() throws PersistanceException {
+
+        try {
+            List<Order> orders = new ArrayList<>();
+            List<OrderQueryDTO> ordersDTO = this.dao.findOrdersByState(OrderState.READY);
+            return orders;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new PersistanceException(e.getClass() + " " + e.getMessage());
+        }
+
     }
 
 }
