@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters;
+package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,17 +9,17 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Client;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderReadyQueryGateway;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderInPreparationQueryGateway;
 
-public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
+public class OrderInPreparationQueryGatewayImpl implements OrderInPreparationQueryGateway {
 
     private List<Order> orders;
 
-    public OrderReadyQueryGatewayImpl() {
+    public OrderInPreparationQueryGatewayImpl() {
         this.orders = new ArrayList<>();
+
         Order order = new OrderAtReceipt();
-        order.setId(3L);
+        order.setId(2L);
         Client client = new Client();
         client.setFirstName("Jojo");
         client.setLastName("Tronchon");
@@ -27,14 +27,14 @@ public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
         Cart cart = new Cart();
         cart.getItems().addAll(Arrays.asList("item1", "item2"));
         order.setCart(cart);
-        order = new OrderInPreparation(order, "Jojo");
-        order = new OrderReady(order, "Jojo");
 
+        order = new OrderInPreparation(order, "Jojo");
         orders.add(order);
+
     }
 
     @Override
-    public List<Order> getOrdersWhereStateIsReady() {
+    public List<Order> getOrdersWhereStateIsInPreparation() {
         return this.orders;
     }
 

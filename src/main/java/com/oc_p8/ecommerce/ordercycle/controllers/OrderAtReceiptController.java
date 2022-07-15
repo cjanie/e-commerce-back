@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrdersAtReceiptUseCase;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.OrderAtReceiptQueryGatewayImpl;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries.OrderAtReceiptQueryGatewayImpl;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
 
 @RestController

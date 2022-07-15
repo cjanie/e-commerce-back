@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrdersReadyUseCase;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.OrderReadyQueryGatewayImpl;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries.OrderReadyQueryGatewayImpl;
 
 @RestController
 @RequestMapping("/orders/ready")
