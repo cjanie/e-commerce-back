@@ -13,6 +13,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderReadyQueryGateway;
 
 class InMemoryOrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
@@ -35,7 +36,7 @@ public class GetOrdersReadyUseCaseTest {
     // Clean Archi with In Memory Gateways impl
 
     @Test
-    public void returnsOrdersWhenThereAreSomeReady() {
+    public void returnsOrdersWhenThereAreSomeReady() throws PersistanceException {
         InMemoryOrderReadyQueryGatewayImpl queryGateway = new InMemoryOrderReadyQueryGatewayImpl();
         Order order = new OrderAtReceipt();
         queryGateway.setOrders(Arrays.asList(new OrderReady(order, "Jo"), new OrderReady(order, "Jano")));
@@ -43,7 +44,7 @@ public class GetOrdersReadyUseCaseTest {
     }
 
     @Test
-    public void isEmptyWhenNothingReady() {
+    public void isEmptyWhenNothingReady() throws PersistanceException {
         assertEquals(0,
                 new GetOrdersReadyUseCase(new InMemoryOrderReadyQueryGatewayImpl()).handle().size());
     }
@@ -51,7 +52,7 @@ public class GetOrdersReadyUseCaseTest {
     // Requirements
 
     @Test
-    public void returnsOrdersWhereOrderStateIsReady() {
+    public void returnsOrdersWhereOrderStateIsReady() throws PersistanceException {
         InMemoryOrderReadyQueryGatewayImpl queryGateway = new InMemoryOrderReadyQueryGatewayImpl();
         Order order = new OrderAtReceipt();
         order = new OrderInPreparation(order, "Jojo");
@@ -60,7 +61,7 @@ public class GetOrdersReadyUseCaseTest {
     }
 
     @Test
-    public void orderHasAssignee() {
+    public void orderHasAssignee() throws PersistanceException {
         InMemoryOrderReadyQueryGatewayImpl queryGateway = new InMemoryOrderReadyQueryGatewayImpl();
         Order order = new OrderAtReceipt();
         order = new OrderInPreparation(order, "Jojo");
