@@ -8,12 +8,17 @@ class ConnectionManagerSQL {
 
     private static ConnectionManagerSQL INSTANCE;
 
-    private String url = "jdbc:mysql://localhost:3306/order_cycle?serverTimezone=UTC";
-    private String userName = "root";
-    private String password = "root3264restController";
+    private String url = "jdbc:postgresql://localhost:5432/order_cycle";
+    private String userName = "postgres";
+    private String password = "postgres";
     // Command Line: % /usr/local/mysql/bin/mysql -uroot -proot3264restController
-    // SHOW DATABASES
-    // SHOW TABLES FROM order_cycle
+    // SHOW DATABASES;
+    // SHOW TABLES FROM order_cycle;
+
+    // USE order_cycle
+    // psql -U postgres -d order_cycle
+    // \dt (Tables)
+    // SELECT * FROM "order";
 
     private Connection connection;
 

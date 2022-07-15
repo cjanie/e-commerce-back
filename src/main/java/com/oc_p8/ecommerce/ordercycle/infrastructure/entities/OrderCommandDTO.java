@@ -1,51 +1,31 @@
 package com.oc_p8.ecommerce.ordercycle.infrastructure.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 
-// TODO Hibernate JPA annotations
+import lombok.Data;
 
+@Entity(name = "order")
+@Table(name = "orders")
+@Data
 public class OrderCommandDTO {
 
+    @Id
     private Long id;
 
+    @Column
     private String clientFirstName;
 
+    @Column
     private String clientLastName;
 
     // TODO Cart
 
+    @Column
     private OrderState state;
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getClientFirstName() {
-        return this.clientFirstName;
-    }
-
-    public void setClientFirstName(String clientFirstName) {
-        this.clientFirstName = clientFirstName;
-    }
-
-    public String getClientLastName() {
-        return this.clientLastName;
-    }
-
-    public void setClientLastName(String clientLastName) {
-        this.clientLastName = clientLastName;
-    }
-
-    public OrderState getState() {
-        return this.state;
-    }
-
-    public void setState(OrderState state) {
-        this.state = state;
-    }
 
 }

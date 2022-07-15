@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderAtReceiptCommandGateway;
 
 class InMemoryOrderAtReceiptCommandGatewayImpl implements OrderAtReceiptCommandGateway {
@@ -23,13 +24,13 @@ class InMemoryOrderAtReceiptCommandGatewayImpl implements OrderAtReceiptCommandG
 public class SaveOrderAtReceiptUseCaseTest {
 
     @Test
-    public void returnsIdOfSavedOrder() {
+    public void returnsIdOfSavedOrder() throws PersistanceException {
         assertEquals(1L, new SaveOrderAtReceiptUseCase(new InMemoryOrderAtReceiptCommandGatewayImpl())
                 .handle(new OrderAtReceipt()));
     }
 
     @Test
-    public void stateOfSavedOrderIsAtReceipt() {
+    public void stateOfSavedOrderIsAtReceipt() throws PersistanceException {
         InMemoryOrderAtReceiptCommandGatewayImpl commandGateway = new InMemoryOrderAtReceiptCommandGatewayImpl();
         SaveOrderAtReceiptUseCase saveOrderAtReceiptUseCase = new SaveOrderAtReceiptUseCase(commandGateway);
         saveOrderAtReceiptUseCase.handle(new OrderAtReceipt());
