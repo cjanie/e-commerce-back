@@ -28,4 +28,7 @@ public class OrderCommandDTO {
     @Column
     private OrderState state;
 
+    @Column
+    private String assignee;
+
 }
