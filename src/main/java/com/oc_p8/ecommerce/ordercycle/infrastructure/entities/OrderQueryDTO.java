@@ -4,6 +4,8 @@ public class OrderQueryDTO {
 
     private Long id;
 
+    private Integer state;
+
     private String assignee;
 
     public Long getId() {
@@ -14,6 +16,14 @@ public class OrderQueryDTO {
         this.id = id;
     }
 
+    public Integer getState() {
+        return this.state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
     public String getAssignee() {
         return this.assignee;
     }
@@ -21,5 +31,4 @@ public class OrderQueryDTO {
     public void setAssignee(String assignee) {
         this.assignee = assignee;
     }
-
 }
