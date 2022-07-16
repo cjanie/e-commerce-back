@@ -4,11 +4,7 @@ public class OrderQueryDTO {
 
     private Long id;
 
-    private String clientFirstName;
-
-    private String clientLastName;
-
-    // TODO Cart
+    private String assignee;
 
     public Long getId() {
         return this.id;
@@ -18,20 +14,12 @@ public class OrderQueryDTO {
         this.id = id;
     }
 
-    public String getClientFirstName() {
-        return this.clientFirstName;
+    public String getAssignee() {
+        return this.assignee;
     }
 
-    public void setClientFirstName(String clientFirstName) {
-        this.clientFirstName = clientFirstName;
-    }
-
-    public String getClientLastName() {
-        return this.clientLastName;
-    }
-
-    public void setClientLastName(String clientLastName) {
-        this.clientLastName = clientLastName;
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 
 }

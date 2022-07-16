@@ -9,8 +9,6 @@ public abstract class DecoratorOrderInProcess extends Order {
         this.order = order;
         this.assignee = assignee;
         this.id = order.getId();
-        this.client = order.getClient();
-        this.cart = order.getCart();
     }
 
     public abstract String getHistoric();

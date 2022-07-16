@@ -19,10 +19,8 @@ public class OrderAtReceiptCommandGatewayImpl implements OrderAtReceiptCommandGa
         try {
             OrderCommandDTO orderDTO = new OrderCommandDTO();
             orderDTO.setId(orderAtReceipt.getId());
-            orderDTO.setClientFirstName(orderAtReceipt.getClient().getFirstName());
-            orderDTO.setClientLastName(orderAtReceipt.getClient().getLastName());
-            // TODO Cart
             orderDTO.setState(orderAtReceipt.state());
+            orderDTO.setAssignee(null);
 
             return this.repository.save(orderDTO).getId();
 

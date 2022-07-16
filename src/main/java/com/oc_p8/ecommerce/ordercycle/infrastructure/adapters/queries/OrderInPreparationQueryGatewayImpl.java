@@ -2,14 +2,9 @@ package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Cart;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Client;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparationFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderInPreparationQueryGateway;
@@ -45,17 +40,8 @@ public class OrderInPreparationQueryGatewayImpl implements OrderInPreparationQue
     }
 
     private Order createOrderFromOrderDTO(OrderQueryDTO orderDTO) {
-        Order order = new OrderAtReceipt();
-        order.setId(orderDTO.getId());
-
-        Client client = new Client();
-        client.setFirstName(orderDTO.getClientFirstName());
-        client.setLastName(orderDTO.getClientLastName());
-        order.setClient(client);
-
-        order.setCart(new Cart()); // TODO Cart
-        order = new OrderInPreparation(order, "Jojo"); // TODO Assignee
-
+        Order order = OrderInPreparationFactory.getInstance().createOrderInPreparation(orderDTO.getId(),
+                orderDTO.getAssignee());
         return order;
     }
 

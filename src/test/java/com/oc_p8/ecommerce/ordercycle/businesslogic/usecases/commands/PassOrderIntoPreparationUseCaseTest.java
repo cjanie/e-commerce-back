@@ -26,7 +26,7 @@ public class PassOrderIntoPreparationUseCaseTest {
         Order order = new OrderAtReceipt();
         order.setId(1L);
         Long id = new PassOrderIntoPreparationUseCase(
-                new InMemoryOrderInPreparationCommandGatewayImpl()).handle(order, "Jo");
+                new InMemoryOrderInPreparationCommandGatewayImpl()).handle(1L, "Jo");
         assertEquals(1L, id);
     }
 }

@@ -18,14 +18,6 @@ public class OrderCommandDTO {
     private Long id;
 
     @Column
-    private String clientFirstName;
-
-    @Column
-    private String clientLastName;
-
-    // TODO Cart
-
-    @Column
     private OrderState state;
 
     @Column

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.commands.PassOrderIntoPreparationUseCase;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrdersInPreparationUseCase;
@@ -47,11 +46,9 @@ public class OrderInPreparationController {
     @PostMapping
     public ResponseEntity<?> passOrderIntoPreparation(@RequestBody OrderActionDTO action) {
         try {
-            Order order = new OrderAtReceipt();
-            order.setId(action.getOrderId());
             Long id = new PassOrderIntoPreparationUseCase(
                     new OrderInPreparationCommandGatewayImpl(this.commandRepository))
-                    .handle(order, action.getAssignee());
+                    .handle(action.getOrderId(), action.getAssignee());
             return new ResponseEntity<Long>(id, HttpStatus.OK);
         } catch (PersistanceException e) {
             e.printStackTrace();
