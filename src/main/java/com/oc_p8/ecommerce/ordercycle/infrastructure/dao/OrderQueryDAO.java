@@ -12,12 +12,10 @@ import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
 
 public class OrderQueryDAO {
 
-    private String request = "SELECT id, assignee FROM orders WHERE state = ?;";
-
     public List<OrderQueryDTO> findOrdersByState(OrderState state) throws SQLException {
         List<OrderQueryDTO> orders = new ArrayList<>();
-
-        PreparedStatement ps = this.getConnection().prepareStatement(request);
+        String sql = "SELECT id, assignee FROM orders WHERE state = ?;";
+        PreparedStatement ps = this.getConnection().prepareStatement(sql);
         ps.setInt(1, state.ordinal());
 
         ResultSet rs = ps.executeQuery();
@@ -33,6 +31,23 @@ public class OrderQueryDAO {
         ps.close();
 
         return orders;
+    }
+
+    public OrderQueryDTO findOrderById(Long id) throws SQLException {
+        OrderQueryDTO orderDTO = null;
+        String sql = "SELECT id, state, assignee FROM orders WHERE id = ?;";
+        PreparedStatement ps = this.getConnection().prepareStatement(sql);
+        ps.setLong(1, id);
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            orderDTO = new OrderQueryDTO();
+            orderDTO.setId(rs.getLong("id"));
+            orderDTO.setState(rs.getInt("state"));
+            orderDTO.setAssignee(rs.getString("assignee"));
+        }
+
+        return orderDTO;
     }
 
     private Connection getConnection() throws SQLException {
