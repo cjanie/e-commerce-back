@@ -12,7 +12,7 @@ import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
 
 public class OrderQueryDAO {
 
-    private String request = "SELECT id, client_first_name, client_last_name FROM orders WHERE state = ?;";
+    private String request = "SELECT id, assignee FROM orders WHERE state = ?;";
 
     public List<OrderQueryDTO> findOrdersByState(OrderState state) throws SQLException {
         List<OrderQueryDTO> orders = new ArrayList<>();
@@ -24,9 +24,8 @@ public class OrderQueryDAO {
         while (rs.next()) {
             OrderQueryDTO orderQueryDTO = new OrderQueryDTO();
             orderQueryDTO.setId(rs.getLong("id"));
-            orderQueryDTO.setClientFirstName(rs.getString("client_first_name"));
-            orderQueryDTO.setClientLastName(rs.getString("client_last_name"));
-            // TODO Cart
+            orderQueryDTO.setAssignee(rs.getString("assignee"));
+
             orders.add(orderQueryDTO);
         }
 

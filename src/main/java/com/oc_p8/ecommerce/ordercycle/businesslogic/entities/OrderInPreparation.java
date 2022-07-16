@@ -4,7 +4,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 
 public class OrderInPreparation extends DecoratorOrderInProcess {
 
-    public OrderInPreparation(Order order, String assignee) {
+    OrderInPreparation(Order order, String assignee) {
         super(order, assignee);
     }
 

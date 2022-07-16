@@ -2,14 +2,9 @@ package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Cart;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Client;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparationFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
@@ -31,7 +26,15 @@ public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
 
         try {
             List<Order> orders = new ArrayList<>();
-            List<OrderQueryDTO> ordersDTO = this.dao.findOrdersByState(OrderState.READY);
+            List<OrderQueryDTO> ordersDTOs = this.dao.findOrdersByState(OrderState.READY);
+            if (!ordersDTOs.isEmpty()) {
+                for (OrderQueryDTO orderDto : ordersDTOs) {
+                    Order order = OrderInPreparationFactory.getInstance().createOrderInPreparation(orderDto.getId(),
+                            orderDto.getAssignee());
+                    order = new OrderReady(order, orderDto.getAssignee()); // TODO with a second assignee
+                    orders.add(order);
+                }
+            }
             return orders;
         } catch (SQLException e) {
             e.printStackTrace();

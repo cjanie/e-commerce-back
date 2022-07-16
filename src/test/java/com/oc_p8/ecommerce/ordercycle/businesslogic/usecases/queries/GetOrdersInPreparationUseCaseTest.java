@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparationFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderInPreparationQueryGateway;
@@ -36,9 +36,9 @@ public class GetOrdersInPreparationUseCaseTest {
     @Test
     public void returnsOrdersWhenThereAreSomeInPreparation() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
-        Order order = new OrderAtReceipt();
         queryGateway
-                .setOrders(Arrays.asList(new OrderInPreparation(order, "Jojo"), new OrderInPreparation(order, "Jojo")));
+                .setOrders(Arrays.asList(OrderInPreparationFactory.getInstance().createOrderInPreparation(1L, "Jojo"),
+                        OrderInPreparationFactory.getInstance().createOrderInPreparation(2L, "Jojo")));
         assertEquals(2, new GetOrdersInPreparationUseCase(queryGateway).handle().size());
     }
 
@@ -53,16 +53,16 @@ public class GetOrdersInPreparationUseCaseTest {
     @Test
     public void returnsOrdersWhereOrderStateIsInPreparation() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
-        Order order = new OrderAtReceipt();
-        queryGateway.setOrders(Arrays.asList(new OrderInPreparation(order, "Janon")));
+        queryGateway.setOrders(
+                Arrays.asList(OrderInPreparationFactory.getInstance().createOrderInPreparation(1L, "Janon")));
         assertEquals(OrderState.PREPARATION, new GetOrdersInPreparationUseCase(queryGateway).handle().get(0).state());
     }
 
     @Test
     public void orderHasAssigneeJojo() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
-        Order order = new OrderAtReceipt();
-        queryGateway.setOrders(Arrays.asList(new OrderInPreparation(order, "Jojo")));
+        queryGateway
+                .setOrders(Arrays.asList(OrderInPreparationFactory.getInstance().createOrderInPreparation(1L, "Jojo")));
         assertEquals("Jojo",
                 ((OrderInPreparation) new GetOrdersInPreparationUseCase(queryGateway).handle().get(0)).assignee());
     }
@@ -70,8 +70,8 @@ public class GetOrdersInPreparationUseCaseTest {
     @Test
     public void orderHasAssigneeLola() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
-        Order order = new OrderAtReceipt();
-        queryGateway.setOrders(Arrays.asList(new OrderInPreparation(order, "Lola")));
+        queryGateway
+                .setOrders(Arrays.asList(OrderInPreparationFactory.getInstance().createOrderInPreparation(1L, "Lola")));
         assertEquals("Lola",
                 ((OrderInPreparation) new GetOrdersInPreparationUseCase(queryGateway).handle().get(0)).assignee());
     }

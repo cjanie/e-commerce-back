@@ -2,8 +2,6 @@ package com.oc_p8.ecommerce.ordercycle.controllers.dto;
 
 import java.util.List;
 
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Cart;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Client;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
 
 public class OrderSentDTO {
@@ -51,13 +49,6 @@ public class OrderSentDTO {
     public OrderAtReceipt format() {
         OrderAtReceipt orderAtReceipt = new OrderAtReceipt();
         orderAtReceipt.setId(this.id);
-        Client client = new Client();
-        client.setFirstName(this.clientFirstName);
-        client.setLastName(this.clientLastName);
-        orderAtReceipt.setClient(client);
-        Cart cart = new Cart();
-        cart.setItems(this.items);
-        orderAtReceipt.setCart(cart);
         return orderAtReceipt;
     }
 
