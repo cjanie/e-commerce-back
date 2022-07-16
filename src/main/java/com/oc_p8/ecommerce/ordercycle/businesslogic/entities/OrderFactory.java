@@ -6,7 +6,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderStateVisitor;
 public class OrderFactory {
 
     public Order createOrder(Long id) {
-        return this.createOrder(id, OrderState.RECEIPT, null);
+        return this.createOrderAtReceipt(id);
     }
 
     public Order createOrder(Long id, OrderState state, String assignee) {
@@ -15,24 +15,37 @@ public class OrderFactory {
 
             @Override
             public Order visitReceipt() {
-                Order order = new OrderAtReceipt();
-                order.setId(id);
-                return order;
+                return createOrderAtReceipt(id);
             }
 
             @Override
             public Order visitPreparation() {
-                return OrderInPreparationFactory.getInstance().createOrderInPreparation(id, assignee);
+                return createOrderInPreparation(id, assignee);
             }
 
             @Override
             public Order visitReady() {
-                // TODO OrderReadyFactory Auto-generated method stub
-                Order order = OrderInPreparationFactory.getInstance().createOrderInPreparation(id, assignee);
-                order = new OrderReady(order, assignee);
-                return order;
+                return createOrderReady(id, assignee);
             }
 
         });
+    }
+
+    private OrderAtReceipt createOrderAtReceipt(Long id) {
+        Order order = new OrderAtReceipt();
+        order.setId(id);
+        return (OrderAtReceipt) order;
+    }
+
+    private OrderInPreparation createOrderInPreparation(Long id, String assignee) {
+        Order order = this.createOrderAtReceipt(id);
+        order = new OrderInPreparation(order, assignee);
+        return (OrderInPreparation) order;
+    }
+
+    private OrderReady createOrderReady(Long id, String assignee) {
+        Order order = this.createOrderInPreparation(id, assignee);
+        order = new OrderReady(order, assignee);
+        return (OrderReady) order;
     }
 }
