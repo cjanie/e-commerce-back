@@ -4,6 +4,10 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 
 public class OrderAtReceipt extends Order {
 
+    OrderAtReceipt() {
+
+    }
+
     @Override
     public OrderState state() {
         return OrderState.RECEIPT;

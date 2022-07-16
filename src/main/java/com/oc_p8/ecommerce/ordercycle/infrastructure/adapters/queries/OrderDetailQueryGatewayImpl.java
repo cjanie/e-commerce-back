@@ -3,8 +3,8 @@ package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.queries;
 import java.sql.SQLException;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparationFactory;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderDetailQueryGateway;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
@@ -23,13 +23,20 @@ public class OrderDetailQueryGatewayImpl implements OrderDetailQueryGateway {
         try {
             OrderQueryDTO orderDTO = this.dao.findOrderById(id);
 
-            if (orderDTO.getState() == 1) { // TODO Pattern visitor
-                return OrderInPreparationFactory.getInstance().createOrderInPreparation(orderDTO.getId(),
+            if (orderDTO.getState() == OrderState.PREPARATION.ordinal()) { // TODO Pattern visitor
+                return new OrderFactory().createOrder(
+                        orderDTO.getId(),
+                        OrderState.PREPARATION,
                         orderDTO.getAssignee());
+
+            } else if (orderDTO.getState() == OrderState.READY.ordinal()) {
+                return new OrderFactory().createOrder(
+                        orderDTO.getId(),
+                        OrderState.READY,
+                        orderDTO.getAssignee());
+
             } else {
-                Order order = new OrderAtReceipt();
-                order.setId(orderDTO.getId());
-                return order;
+                return new OrderFactory().createOrder(id);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderAtReceiptQueryGateway;
@@ -36,7 +36,7 @@ public class GetOrdersAtReceiptUseCaseTests {
     @Test
     public void returnsOrdersWhenThereAreSomeAtReceipt() throws PersistanceException {
         InMemoryOrderAtReceiptQueryGatewayImpl queryGateway = new InMemoryOrderAtReceiptQueryGatewayImpl();
-        queryGateway.setOrders(Arrays.asList(new OrderAtReceipt(), new OrderAtReceipt()));
+        queryGateway.setOrders(Arrays.asList(new OrderFactory().createOrder(1L), new OrderFactory().createOrder(2L)));
         assertEquals(2, new GetOrdersAtReceiptUseCase(queryGateway).handle().size());
     }
 
@@ -50,7 +50,7 @@ public class GetOrdersAtReceiptUseCaseTests {
     @Test
     public void returnsOrdersWhereOrderStateIsAtReceipt() throws PersistanceException {
         InMemoryOrderAtReceiptQueryGatewayImpl queryGateway = new InMemoryOrderAtReceiptQueryGatewayImpl();
-        queryGateway.setOrders(Arrays.asList(new OrderAtReceipt()));
+        queryGateway.setOrders(Arrays.asList(new OrderFactory().createOrder(1L)));
         assertEquals(OrderState.RECEIPT, new GetOrdersAtReceiptUseCase(queryGateway).handle().get(0).state());
     }
 }

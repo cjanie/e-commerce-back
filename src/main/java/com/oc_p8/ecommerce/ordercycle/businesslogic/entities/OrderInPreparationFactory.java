@@ -1,6 +1,6 @@
 package com.oc_p8.ecommerce.ordercycle.businesslogic.entities;
 
-public class OrderInPreparationFactory {
+class OrderInPreparationFactory {
 
     private static OrderInPreparationFactory INSTANCE;
 

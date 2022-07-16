@@ -4,8 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparationFactory;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderReadyQueryGateway;
@@ -29,9 +28,11 @@ public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
             List<OrderQueryDTO> ordersDTOs = this.dao.findOrdersByState(OrderState.READY);
             if (!ordersDTOs.isEmpty()) {
                 for (OrderQueryDTO orderDto : ordersDTOs) {
-                    Order order = OrderInPreparationFactory.getInstance().createOrderInPreparation(orderDto.getId(),
+                    Order order = new OrderFactory().createOrder(
+                            orderDto.getId(),
+                            OrderState.READY,
                             orderDto.getAssignee());
-                    order = new OrderReady(order, orderDto.getAssignee()); // TODO with a second assignee
+                    // TODO with a second assignee
                     orders.add(order);
                 }
             }

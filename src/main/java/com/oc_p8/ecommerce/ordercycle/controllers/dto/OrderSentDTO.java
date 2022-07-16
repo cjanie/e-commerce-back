@@ -2,7 +2,9 @@ package com.oc_p8.ecommerce.ordercycle.controllers.dto;
 
 import java.util.List;
 
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 
 public class OrderSentDTO {
 
@@ -47,9 +49,9 @@ public class OrderSentDTO {
     }
 
     public OrderAtReceipt format() {
-        OrderAtReceipt orderAtReceipt = new OrderAtReceipt();
+        Order orderAtReceipt = new OrderFactory().createOrder(this.id);
         orderAtReceipt.setId(this.id);
-        return orderAtReceipt;
+        return (OrderAtReceipt) orderAtReceipt;
     }
 
 }
