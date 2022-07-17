@@ -27,13 +27,13 @@ public class OrderDetailQueryGatewayImpl implements OrderDetailQueryGateway {
                 return new OrderFactory().createOrder(
                         orderDTO.getId(),
                         OrderState.PREPARATION,
-                        orderDTO.getAssignee());
+                        orderDTO.getAssignees());
 
             } else if (orderDTO.getState() == OrderState.READY.ordinal()) {
                 return new OrderFactory().createOrder(
                         orderDTO.getId(),
                         OrderState.READY,
-                        orderDTO.getAssignee());
+                        orderDTO.getAssignees());
 
             } else {
                 return new OrderFactory().createOrder(id);

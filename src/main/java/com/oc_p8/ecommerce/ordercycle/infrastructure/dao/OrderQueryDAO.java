@@ -14,7 +14,7 @@ public class OrderQueryDAO {
 
     public List<OrderQueryDTO> findOrdersByState(OrderState state) throws SQLException {
         List<OrderQueryDTO> orders = new ArrayList<>();
-        String sql = "SELECT id, assignee FROM orders WHERE state = ?;";
+        String sql = "SELECT id, assignees FROM orders WHERE state = ?;";
         PreparedStatement ps = this.getConnection().prepareStatement(sql);
         ps.setInt(1, state.ordinal());
 
@@ -22,7 +22,7 @@ public class OrderQueryDAO {
         while (rs.next()) {
             OrderQueryDTO orderQueryDTO = new OrderQueryDTO();
             orderQueryDTO.setId(rs.getLong("id"));
-            orderQueryDTO.setAssignee(rs.getString("assignee"));
+            orderQueryDTO.setAssignees(rs.getString("assignees"));
 
             orders.add(orderQueryDTO);
         }
@@ -35,7 +35,7 @@ public class OrderQueryDAO {
 
     public OrderQueryDTO findOrderById(Long id) throws SQLException {
         OrderQueryDTO orderDTO = null;
-        String sql = "SELECT id, state, assignee FROM orders WHERE id = ?;";
+        String sql = "SELECT id, state, assignees FROM orders WHERE id = ?;";
         PreparedStatement ps = this.getConnection().prepareStatement(sql);
         ps.setLong(1, id);
 
@@ -44,7 +44,7 @@ public class OrderQueryDAO {
             orderDTO = new OrderQueryDTO();
             orderDTO.setId(rs.getLong("id"));
             orderDTO.setState(rs.getInt("state"));
-            orderDTO.setAssignee(rs.getString("assignee"));
+            orderDTO.setAssignees(rs.getString("assignees"));
         }
 
         return orderDTO;

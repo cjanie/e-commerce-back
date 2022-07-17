@@ -16,8 +16,7 @@ class OrderInPreparationFactory {
     }
 
     public OrderInPreparation createOrderInPreparation(Long id, String assignee) {
-        Order order = new OrderAtReceipt();
-        order.setId(id);
+        Order order = new OrderAtReceipt(id);
         order = new OrderInPreparation(order, assignee);
         return (OrderInPreparation) order;
     }

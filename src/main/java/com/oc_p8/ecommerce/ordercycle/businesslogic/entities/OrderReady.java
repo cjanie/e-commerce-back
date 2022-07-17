@@ -13,14 +13,14 @@ public class OrderReady extends DecoratorOrderInProcess {
         return OrderState.READY;
     }
 
-    public String assignee() {
+    public String assignees() {
         String assignees = ((OrderInPreparation) this.order).assignee() + "," + this.assignee;
         return assignees;
     }
 
     @Override
     public String getHistoric() {
-        String[] assignees = this.assignee().split(",");
+        String[] assignees = this.assignees().split(",");
         return this.order.getHistoric() + " New State " + this.state() + " by " + assignees[1] + ".";
     }
 

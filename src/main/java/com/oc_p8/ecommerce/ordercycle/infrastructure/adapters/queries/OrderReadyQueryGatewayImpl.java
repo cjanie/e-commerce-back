@@ -31,7 +31,7 @@ public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
                     Order order = new OrderFactory().createOrder(
                             orderDto.getId(),
                             OrderState.READY,
-                            orderDto.getAssignee());
+                            orderDto.getAssignees());
                     orders.add(order);
                 }
             }

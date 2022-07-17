@@ -69,7 +69,7 @@ public class GetOrdersReadyUseCaseTest {
         Order order = new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Jojo");
         order = new OrderFactory().createOrderReady((OrderInPreparation) order, "Jojo");
         queryGateway.setOrders(Arrays.asList(order));
-        assertEquals("Jojo,Jojo", ((OrderReady) new GetOrdersReadyUseCase(queryGateway).handle().get(0)).assignee());
+        assertEquals("Jojo,Jojo", ((OrderReady) new GetOrdersReadyUseCase(queryGateway).handle().get(0)).assignees());
     }
 
 }

@@ -20,7 +20,7 @@ public class OrderReadyCommandGatewayImpl implements OrderReadyCommandGateway {
             OrderCommandDTO commandDTO = new OrderCommandDTO();
             commandDTO.setId(order.getId());
             commandDTO.setState(order.state());
-            commandDTO.setAssignee(order.assignee());
+            commandDTO.setAssignees(order.assignees());
             return this.repository.save(commandDTO).getId();
         } catch (Exception e) {
             e.printStackTrace();

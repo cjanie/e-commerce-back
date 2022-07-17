@@ -32,9 +32,7 @@ public class OrderFactory {
     }
 
     private OrderAtReceipt createOrderAtReceipt(Long id) {
-        Order order = new OrderAtReceipt();
-        order.setId(id);
-        return (OrderAtReceipt) order;
+        return new OrderAtReceipt(id);
     }
 
     private OrderInPreparation createOrderInPreparation(Long id, String assignee) {
@@ -57,4 +55,5 @@ public class OrderFactory {
         OrderReady orderReady = new OrderReady(order, assignee);
         return orderReady;
     }
+
 }

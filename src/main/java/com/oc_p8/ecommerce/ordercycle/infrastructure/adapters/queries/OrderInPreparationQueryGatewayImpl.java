@@ -41,7 +41,7 @@ public class OrderInPreparationQueryGatewayImpl implements OrderInPreparationQue
 
     private Order createOrderFromOrderDTO(OrderQueryDTO orderDTO) {
         Order order = new OrderFactory().createOrder(orderDTO.getId(), OrderState.PREPARATION,
-                orderDTO.getAssignee());
+                orderDTO.getAssignees());
         return order;
     }
 
