@@ -9,14 +9,6 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 
-class PassOrderToReadyUseCase {
-
-    Order handle(Order order, String assignee) {
-        order = new OrderFactory().createOrder(order.getId(), OrderState.READY, assignee);
-        return order;
-    }
-}
-
 public class PassOrderToReadyUseCaseTest {
 
     @Test

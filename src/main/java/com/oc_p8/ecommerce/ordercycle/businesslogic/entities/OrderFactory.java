@@ -2,6 +2,8 @@ package com.oc_p8.ecommerce.ordercycle.businesslogic.entities;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderStateVisitor;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrderByIdUseCase;
 
 public class OrderFactory {
 
@@ -47,6 +49,18 @@ public class OrderFactory {
         Order order = this.createOrderInPreparation(id, assignee0);
         order = new OrderReady(order, assignee1);
         return (OrderReady) order;
+    }
+
+    private OrderReady createOrderReady(Long id, GetOrderByIdUseCase getOrderByIdUseCase, String assignee)
+            throws PersistanceException {
+        Order order = getOrderByIdUseCase.handle(id);
+        order = new OrderReady(order, assignee);
+        return (OrderReady) order;
+    }
+
+    public OrderReady createOrderReady(Order order, String assignee) {
+        OrderReady orderReady = new OrderReady(order, assignee);
+        return orderReady;
     }
 
     private String[] formatAssigneeToArray(String assignee) {
