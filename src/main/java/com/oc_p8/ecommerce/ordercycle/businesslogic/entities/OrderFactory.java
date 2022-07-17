@@ -20,12 +20,12 @@ public class OrderFactory {
 
             @Override
             public Order visitPreparation() {
-                return createOrderInPreparation(id, assignee);
+                return createOrderInPreparation(id, getAssigneeAsArray(assignee)[0]);
             }
 
             @Override
             public Order visitReady() {
-                return createOrderReady(id, assignee);
+                return createOrderReady(id, getAssigneeAsArray(assignee)[0], getAssigneeAsArray(assignee)[1]);
             }
 
         });
@@ -43,9 +43,13 @@ public class OrderFactory {
         return (OrderInPreparation) order;
     }
 
-    private OrderReady createOrderReady(Long id, String assignee) {
-        Order order = this.createOrderInPreparation(id, assignee);
-        order = new OrderReady(order, assignee);
+    private OrderReady createOrderReady(Long id, String assignee0, String assignee1) {
+        Order order = this.createOrderInPreparation(id, assignee0);
+        order = new OrderReady(order, assignee1);
         return (OrderReady) order;
+    }
+
+    private String[] getAssigneeAsArray(String assignee) {
+        return assignee.split(",");
     }
 }

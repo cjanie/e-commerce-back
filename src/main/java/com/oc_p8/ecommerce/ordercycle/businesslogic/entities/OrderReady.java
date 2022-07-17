@@ -14,7 +14,8 @@ public class OrderReady extends DecoratorOrderInProcess {
     }
 
     public String assignee() {
-        return this.assignee;
+        String assignees = ((OrderInPreparation) this.order).assignee() + "," + assignee;
+        return assignees;
     }
 
     @Override

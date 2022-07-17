@@ -32,7 +32,6 @@ public class OrderReadyQueryGatewayImpl implements OrderReadyQueryGateway {
                             orderDto.getId(),
                             OrderState.READY,
                             orderDto.getAssignee());
-                    // TODO with a second assignee
                     orders.add(order);
                 }
             }
