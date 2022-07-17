@@ -1,8 +1,5 @@
 package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.commands;
 
-import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
-
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderReadyCommandGateway;

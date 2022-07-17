@@ -6,30 +6,30 @@ import org.junit.jupiter.api.Test;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderReadyCommandGateway;
+
+class InMemoryOrderReadyCommandGatewayImpl implements OrderReadyCommandGateway {
+
+    @Override
+    public Long updateOrder(OrderReady orderReady) throws PersistanceException {
+        return orderReady.getId();
+    }
+
+}
 
 public class PassOrderToReadyUseCaseTest {
 
     @Test
-    public void orderHasTheSameId() {
-        Order order = new OrderFactory().createOrder(1L);
+    public void orderHasTheSameId() throws PersistanceException {
+        Order order = new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Janie");
+        order = new OrderFactory().createOrderReady((OrderInPreparation) order, "Janie");
 
-        Order actual = new PassOrderToReadyUseCase().handle(order, "Janie");
-        assertEquals(1L, actual.getId());
+        Long actualId = new PassOrderToReadyUseCase(new InMemoryOrderReadyCommandGatewayImpl()).handle(order);
+        assertEquals(1L, actualId);
     }
 
-    @Test
-    public void orderHasAssignee() {
-        Order order = new OrderFactory().createOrder(1L);
-        Order actual = new PassOrderToReadyUseCase().handle(order, "Janie");
-        assertEquals("Janie", ((OrderReady) actual).assignee());
-    }
-
-    @Test
-    public void orderStateIsReady() {
-        Order order = new OrderFactory().createOrder(1L);
-        Order actual = new PassOrderToReadyUseCase().handle(order, "Janie");
-        assertEquals(OrderState.READY, actual.state());
-    }
 }

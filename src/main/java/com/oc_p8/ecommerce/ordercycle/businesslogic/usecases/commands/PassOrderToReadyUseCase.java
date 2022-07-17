@@ -1,9 +1,7 @@
 package com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.commands;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderReadyCommandGateway;
 

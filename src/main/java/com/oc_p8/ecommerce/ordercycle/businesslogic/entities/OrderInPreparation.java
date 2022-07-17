@@ -19,7 +19,7 @@ public class OrderInPreparation extends DecoratorOrderInProcess {
 
     @Override
     public String getHistoric() {
-        return this.order.getHistoric() + " New State " + this.state().toString() + " by Assignee "
+        return this.order.getHistoric() + " New State " + this.state().toString() + " by "
                 + this.assignee() + ".";
     }
 
