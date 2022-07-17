@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparationFactory;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderInPreparationQueryGateway;
@@ -40,8 +40,8 @@ public class OrderInPreparationQueryGatewayImpl implements OrderInPreparationQue
     }
 
     private Order createOrderFromOrderDTO(OrderQueryDTO orderDTO) {
-        Order order = OrderInPreparationFactory.getInstance().createOrderInPreparation(orderDTO.getId(),
-                orderDTO.getAssignee());
+        Order order = new OrderFactory().createOrder(orderDTO.getId(), OrderState.PREPARATION,
+                orderDTO.getAssignees());
         return order;
     }
 

@@ -4,7 +4,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 
 public class OrderReady extends DecoratorOrderInProcess {
 
-    public OrderReady(Order order, String assignee) {
+    OrderReady(Order order, String assignee) {
         super(order, assignee);
     }
 
@@ -13,13 +13,15 @@ public class OrderReady extends DecoratorOrderInProcess {
         return OrderState.READY;
     }
 
-    public String assignee() {
-        return this.assignee;
+    public String assignees() {
+        String assignees = ((OrderInPreparation) this.order).assignee() + "," + this.assignee;
+        return assignees;
     }
 
     @Override
     public String getHistoric() {
-        return this.order.getHistoric() + " New State " + this.state() + " by Assignee " + this.assignee() + ".";
+        String[] assignees = this.assignees().split(",");
+        return this.order.getHistoric() + " New State " + this.state() + " by " + assignees[1] + ".";
     }
 
 }

@@ -1,6 +1,6 @@
 package com.oc_p8.ecommerce.ordercycle.businesslogic.entities;
 
-public class OrderInPreparationFactory {
+class OrderInPreparationFactory {
 
     private static OrderInPreparationFactory INSTANCE;
 
@@ -16,8 +16,7 @@ public class OrderInPreparationFactory {
     }
 
     public OrderInPreparation createOrderInPreparation(Long id, String assignee) {
-        Order order = new OrderAtReceipt();
-        order.setId(id);
+        Order order = new OrderAtReceipt(id);
         order = new OrderInPreparation(order, assignee);
         return (OrderInPreparation) order;
     }

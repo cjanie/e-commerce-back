@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderAtReceiptQueryGateway;
@@ -38,8 +38,7 @@ public class OrderAtReceiptQueryGatewayImpl implements OrderAtReceiptQueryGatewa
     }
 
     private Order createOrderFromOrderDTO(OrderQueryDTO orderDTO) {
-        Order order = new OrderAtReceipt();
-        order.setId(orderDTO.getId());
+        Order order = new OrderFactory().createOrder(orderDTO.getId());
         return order;
     }
 

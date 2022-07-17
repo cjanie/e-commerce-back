@@ -20,7 +20,7 @@ public class OrderInPreparationCommandGatewayImpl implements OrderInPreparationC
             OrderCommandDTO orderDTO = new OrderCommandDTO();
             orderDTO.setId(order.getId());
             orderDTO.setState(order.state());
-            orderDTO.setAssignee(order.assignee());
+            orderDTO.setAssignees(order.assignee());
             return this.repository.save(orderDTO).getId();
         } catch (Exception e) {
             e.printStackTrace();

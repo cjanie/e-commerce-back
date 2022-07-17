@@ -6,7 +6,7 @@ public class OrderQueryDTO {
 
     private Integer state;
 
-    private String assignee;
+    private String assignees;
 
     public Long getId() {
         return this.id;
@@ -24,11 +24,12 @@ public class OrderQueryDTO {
         this.state = state;
     }
 
-    public String getAssignee() {
-        return this.assignee;
+    public String getAssignees() {
+        return this.assignees;
     }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
+    public void setAssignees(String assignees) {
+        this.assignees = assignees;
     }
+
 }

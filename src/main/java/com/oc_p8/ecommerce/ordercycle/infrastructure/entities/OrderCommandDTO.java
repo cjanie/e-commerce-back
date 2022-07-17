@@ -21,6 +21,6 @@ public class OrderCommandDTO {
     private OrderState state;
 
     @Column
-    private String assignee;
+    private String assignees;
 
 }
