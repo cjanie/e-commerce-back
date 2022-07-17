@@ -20,7 +20,8 @@ public class OrderReady extends DecoratorOrderInProcess {
 
     @Override
     public String getHistoric() {
-        return this.order.getHistoric() + " New State " + this.state() + " by Assignee " + this.assignee() + ".";
+        String[] assignees = this.assignee().split(",");
+        return this.order.getHistoric() + " New State " + this.state() + " by Assignee " + assignees[1] + ".";
     }
 
 }
