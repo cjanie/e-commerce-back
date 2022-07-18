@@ -5,13 +5,17 @@ import java.util.List;
 
 public class Cart {
 
-    private List<String> items = new ArrayList<>();
+    private List<Long> items;
 
-    public List<String> getItems() {
+    public Cart() {
+        this.items = new ArrayList<>();
+    }
+
+    public List<Long> getItems() {
         return this.items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(List<Long> items) {
         this.items = items;
     }
 
