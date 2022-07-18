@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ordercycle.businesslogic.entities;
+package com.oc_p8.ecommerce.orderdata.businesslogic.entities;
 
 import java.util.ArrayList;
 import java.util.List;

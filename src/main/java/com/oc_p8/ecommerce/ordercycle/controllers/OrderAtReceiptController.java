@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderAtReceipt;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.commands.SaveOrderAtReceiptUseCase;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrdersAtReceiptUseCase;
@@ -47,11 +48,11 @@ public class OrderAtReceiptController {
     @PostMapping
     public ResponseEntity<?> saveOrderAtReceipt(@RequestBody OrderSentDTO sentDTO) {
         try {
-            OrderAtReceipt orderAtReceipt = sentDTO.format();
+            OrderAtReceipt order = new OrderFactory().createOrderAtReceipt(sentDTO.getId());
 
             return new ResponseEntity<Long>(
                     new SaveOrderAtReceiptUseCase(new OrderAtReceiptCommandGatewayImpl(this.orderCommandRepository))
-                            .handle(orderAtReceipt),
+                            .handle(order),
                     HttpStatus.CREATED);
 
         } catch (PersistanceException e) {
