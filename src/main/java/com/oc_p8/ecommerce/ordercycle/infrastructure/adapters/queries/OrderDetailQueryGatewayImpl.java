@@ -9,13 +9,17 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceExcept
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderDetailQueryGateway;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.factories.VisitorOrderFactory;
 
 public class OrderDetailQueryGatewayImpl implements OrderDetailQueryGateway {
 
     private OrderQueryDAO dao;
 
+    private VisitorOrderFactory<Order> orderFactory;
+
     public OrderDetailQueryGatewayImpl(OrderQueryDAO dao) {
         this.dao = dao;
+        this.orderFactory = new VisitorOrderFactory<>();
     }
 
     @Override
@@ -24,13 +28,13 @@ public class OrderDetailQueryGatewayImpl implements OrderDetailQueryGateway {
             OrderQueryDTO orderDTO = this.dao.findOrderById(id);
 
             if (orderDTO.getState() == OrderState.PREPARATION.ordinal()) { // TODO Pattern visitor
-                return new OrderFactory().createOrder(
+                return this.orderFactory.createOrder(
                         orderDTO.getId(),
                         OrderState.PREPARATION,
                         orderDTO.getAssignees());
 
             } else if (orderDTO.getState() == OrderState.READY.ordinal()) {
-                return new OrderFactory().createOrder(
+                return this.orderFactory.createOrder(
                         orderDTO.getId(),
                         OrderState.READY,
                         orderDTO.getAssignees());

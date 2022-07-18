@@ -8,7 +8,6 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderReadyCommandGateway;
 
@@ -23,9 +22,11 @@ class InMemoryOrderReadyCommandGatewayImpl implements OrderReadyCommandGateway {
 
 public class PassOrderToReadyUseCaseTest {
 
+    private OrderFactory orderFactory = new OrderFactory();
+
     @Test
     public void orderHasTheSameId() throws PersistanceException {
-        Order order = new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Janie");
+        Order order = this.orderFactory.createOrderInPreparation(1L, "Janie");
         order = new OrderFactory().createOrderReady((OrderInPreparation) order, "Janie");
 
         Long actualId = new PassOrderToReadyUseCase(new InMemoryOrderReadyCommandGatewayImpl()).handle(order);
