@@ -6,11 +6,11 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderInPreparationCommandGateway;
 
-public class PassOrderIntoPreparationUseCase {
+public class SaveOrderInPreparationUseCase {
 
     private OrderInPreparationCommandGateway commandGateway;
 
-    public PassOrderIntoPreparationUseCase(OrderInPreparationCommandGateway commandGateway) {
+    public SaveOrderInPreparationUseCase(OrderInPreparationCommandGateway commandGateway) {
         this.commandGateway = commandGateway;
     }
 

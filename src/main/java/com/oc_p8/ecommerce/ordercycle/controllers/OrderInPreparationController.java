@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.commands.PassOrderIntoPreparationUseCase;
+import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.commands.SaveOrderInPreparationUseCase;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.usecases.queries.GetOrdersInPreparationUseCase;
 import com.oc_p8.ecommerce.ordercycle.controllers.dto.OrderActionDTO;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.commands.OrderInPreparationCommandGatewayImpl;
@@ -46,7 +46,7 @@ public class OrderInPreparationController {
     @PostMapping
     public ResponseEntity<?> passOrderIntoPreparation(@RequestBody OrderActionDTO action) {
         try {
-            Long id = new PassOrderIntoPreparationUseCase(
+            Long id = new SaveOrderInPreparationUseCase(
                     new OrderInPreparationCommandGatewayImpl(this.commandRepository))
                     .handle(action.getOrderId(), action.getAssignee());
             return new ResponseEntity<Long>(id, HttpStatus.OK);

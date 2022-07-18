@@ -29,7 +29,7 @@ public class PassOrderToReadyUseCaseTest {
         Order order = this.orderFactory.createOrderInPreparation(1L, "Janie");
         order = new OrderFactory().createOrderReady((OrderInPreparation) order, "Janie");
 
-        Long actualId = new PassOrderToReadyUseCase(new InMemoryOrderReadyCommandGatewayImpl()).handle(order);
+        Long actualId = new SaveOrderReadyUseCase(new InMemoryOrderReadyCommandGatewayImpl()).handle(order);
         assertEquals(1L, actualId);
     }
 
