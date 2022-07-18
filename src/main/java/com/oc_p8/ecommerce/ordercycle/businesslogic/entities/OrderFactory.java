@@ -31,7 +31,7 @@ public class OrderFactory {
         });
     }
 
-    private OrderAtReceipt createOrderAtReceipt(Long id) {
+    public OrderAtReceipt createOrderAtReceipt(Long id) {
         return new OrderAtReceipt(id);
     }
 
