@@ -17,11 +17,11 @@ class InMemoryOrderInPreparationCommandGatewayImpl implements OrderInPreparation
 
 }
 
-public class PassOrderIntoPreparationUseCaseTest {
+public class SaveOrderInPreparationUseCaseTests {
 
     @Test
     public void orderIsUpdateWithTheSameId() throws PersistanceException {
-        Long id = new PassOrderIntoPreparationUseCase(
+        Long id = new SaveOrderInPreparationUseCase(
                 new InMemoryOrderInPreparationCommandGatewayImpl()).handle(1L, "Jo");
         assertEquals(1L, id);
     }

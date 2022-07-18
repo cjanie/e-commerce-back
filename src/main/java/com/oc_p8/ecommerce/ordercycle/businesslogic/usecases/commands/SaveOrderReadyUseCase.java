@@ -5,11 +5,11 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderReady;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderReadyCommandGateway;
 
-public class PassOrderToReadyUseCase {
+public class SaveOrderReadyUseCase {
 
     private OrderReadyCommandGateway commandGateway;
 
-    public PassOrderToReadyUseCase(OrderReadyCommandGateway commandGateway) {
+    public SaveOrderReadyUseCase(OrderReadyCommandGateway commandGateway) {
         this.commandGateway = commandGateway;
     }
 
