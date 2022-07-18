@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.Order;
-import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderFactory;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderAtReceiptQueryGateway;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.factories.VisitorOrderFactory;
 
 public class OrderAtReceiptQueryGatewayImpl implements OrderAtReceiptQueryGateway {
 
     private OrderQueryDAO dao;
 
+    private VisitorOrderFactory<Order> orderFactory;
+
     public OrderAtReceiptQueryGatewayImpl(OrderQueryDAO dao) {
         this.dao = dao;
+        this.orderFactory = new VisitorOrderFactory<>();
     }
 
     @Override
@@ -38,7 +41,7 @@ public class OrderAtReceiptQueryGatewayImpl implements OrderAtReceiptQueryGatewa
     }
 
     private Order createOrderFromOrderDTO(OrderQueryDTO orderDTO) {
-        Order order = new OrderFactory().createOrder(orderDTO.getId());
+        Order order = orderFactory.createOrder(orderDTO.getId(), OrderState.RECEIPT, orderDTO.getAssignees());
         return order;
     }
 

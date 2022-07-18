@@ -31,14 +31,16 @@ class InMemoryOrderInPreparationQueryGatewayImpl implements OrderInPreparationQu
 
 public class GetOrdersInPreparationUseCaseTest {
 
+    private OrderFactory orderFactory = new OrderFactory();
+
     // Clean Archi with In Memory Gateways impl
 
     @Test
     public void returnsOrdersWhenThereAreSomeInPreparation() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
         queryGateway
-                .setOrders(Arrays.asList(new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Jojo"),
-                        new OrderFactory().createOrder(2L, OrderState.PREPARATION, "Jojo")));
+                .setOrders(Arrays.asList(this.orderFactory.createOrderInPreparation(1L, "Jojo"),
+                        this.orderFactory.createOrderInPreparation(2L, "Jojo")));
         assertEquals(2, new GetOrdersInPreparationUseCase(queryGateway).handle().size());
     }
 
@@ -54,7 +56,7 @@ public class GetOrdersInPreparationUseCaseTest {
     public void returnsOrdersWhereOrderStateIsInPreparation() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
         queryGateway.setOrders(
-                Arrays.asList(new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Janon")));
+                Arrays.asList(this.orderFactory.createOrderInPreparation(1L, "Janon")));
         assertEquals(OrderState.PREPARATION, new GetOrdersInPreparationUseCase(queryGateway).handle().get(0).state());
     }
 
@@ -62,7 +64,7 @@ public class GetOrdersInPreparationUseCaseTest {
     public void orderHasAssigneeJojo() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
         queryGateway
-                .setOrders(Arrays.asList(new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Jojo")));
+                .setOrders(Arrays.asList(this.orderFactory.createOrderInPreparation(1L, "Jojo")));
         assertEquals("Jojo",
                 ((OrderInPreparation) new GetOrdersInPreparationUseCase(queryGateway).handle().get(0)).assignee());
     }
@@ -71,7 +73,7 @@ public class GetOrdersInPreparationUseCaseTest {
     public void orderHasAssigneeLola() throws PersistanceException {
         InMemoryOrderInPreparationQueryGatewayImpl queryGateway = new InMemoryOrderInPreparationQueryGatewayImpl();
         queryGateway
-                .setOrders(Arrays.asList(new OrderFactory().createOrder(1L, OrderState.PREPARATION, "Lola")));
+                .setOrders(Arrays.asList(this.orderFactory.createOrderInPreparation(1L, "Lola")));
         assertEquals("Lola",
                 ((OrderInPreparation) new GetOrdersInPreparationUseCase(queryGateway).handle().get(0)).assignee());
     }
