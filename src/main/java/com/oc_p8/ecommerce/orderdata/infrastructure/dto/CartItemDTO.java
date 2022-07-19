@@ -1,5 +1,6 @@
 package com.oc_p8.ecommerce.orderdata.infrastructure.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class CartItemDTO {
     @Column
     private Long itemId;
 
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "order_id")
     private OrderDataDTO order;
 

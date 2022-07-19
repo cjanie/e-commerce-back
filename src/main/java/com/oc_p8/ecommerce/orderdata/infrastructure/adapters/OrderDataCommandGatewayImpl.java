@@ -33,6 +33,7 @@ public class OrderDataCommandGatewayImpl implements OrderDataCommandGateway {
                 CartItemDTO itemDTO = new CartItemDTO();
                 itemDTO.setItemId(item);
                 itemDTOs.add(itemDTO);
+                itemDTO.setOrder(dataDTO);
             }
             dataDTO.setCartItems(itemDTOs);
             ;

@@ -38,7 +38,7 @@ public class OrderDataQueryGatewayImpl implements OrderDataQueryGateway {
             List<Long> items = new ArrayList<>();
             List<CartItemDTO> itemDTOs = dto.getCartItems();
             for (CartItemDTO itemDTO : itemDTOs) {
-                items.add(itemDTO.getId());
+                items.add(itemDTO.getItemId());
             }
             cart.setItems(items);
             order.setCart(cart);
