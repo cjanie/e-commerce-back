@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Cart;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Client;
+import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Item;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.orderdata.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.orderdata.businesslogic.gateways.OrderDataQueryGateway;
@@ -26,9 +27,13 @@ class InMemoryOrderDataQueryGatewayImpl implements OrderDataQueryGateway {
         order.setClient(client);
 
         Cart cart = new Cart();
-        List<Long> items = new ArrayList<>();
-        items.add(1L);
-        items.add(2L);
+        List<Item> items = new ArrayList<>();
+        Item item1 = new Item();
+        item1.setId(1L);
+        Item item2 = new Item();
+        item2.setId(2L);
+        items.add(item1);
+        items.add(item2);
         cart.setItems(items);
         order.setCart(cart);
 

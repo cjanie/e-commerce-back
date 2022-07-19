@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Cart;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Client;
+import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Item;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.orderdata.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.orderdata.businesslogic.gateways.OrderDataQueryGateway;
@@ -34,10 +35,14 @@ public class OrderDataQueryGatewayImpl implements OrderDataQueryGateway {
             order.setClient(client);
 
             Cart cart = new Cart();
-            List<Long> items = new ArrayList<>();
+            List<Item> items = new ArrayList<>();
             List<CartItemDTO> itemDTOs = dto.getCartItems();
             for (CartItemDTO itemDTO : itemDTOs) {
-                items.add(itemDTO.getItemId());
+                Item item = new Item();
+                item.setId(itemDTO.getItemId());
+                item.setName(itemDTO.getName());
+                item.setPrice(itemDTO.getPrice());
+                items.add(item);
             }
             cart.setItems(items);
             order.setCart(cart);

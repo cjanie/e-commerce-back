@@ -1,5 +1,8 @@
 package com.oc_p8.ecommerce.orderdata.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Cart;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Client;
+import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Item;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.orderdata.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.orderdata.businesslogic.usecases.GetOrderByIdUseCase;
 import com.oc_p8.ecommerce.orderdata.businesslogic.usecases.SaveOrderDataUseCase;
+import com.oc_p8.ecommerce.orderdata.controllers.dto.ItemDTO;
 import com.oc_p8.ecommerce.orderdata.controllers.dto.OrderSentDTO;
 import com.oc_p8.ecommerce.orderdata.infrastructure.adapters.OrderDataCommandGatewayImpl;
 import com.oc_p8.ecommerce.orderdata.infrastructure.adapters.OrderDataQueryGatewayImpl;
@@ -52,7 +57,16 @@ public class OrderDataController {
         order.setClient(client);
 
         Cart cart = new Cart();
-        cart.setItems(orderDTO.getItems());
+        List<Item> items = new ArrayList<>();
+        List<ItemDTO> itemDTOs = orderDTO.getItems();
+        for (ItemDTO itemDTO : itemDTOs) {
+            Item item = new Item();
+            item.setId(itemDTO.getId());
+            item.setName(itemDTO.getName());
+            item.setPrice(itemDTO.getPrice());
+            items.add(item);
+        }
+        cart.setItems(items);
         order.setCart(cart);
 
         try {

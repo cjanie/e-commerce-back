@@ -3,6 +3,7 @@ package com.oc_p8.ecommerce.orderdata.infrastructure.adapters;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Item;
 import com.oc_p8.ecommerce.orderdata.businesslogic.entities.Order;
 import com.oc_p8.ecommerce.orderdata.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.orderdata.businesslogic.gateways.OrderDataCommandGateway;
@@ -27,10 +28,12 @@ public class OrderDataCommandGatewayImpl implements OrderDataCommandGateway {
             dataDTO.setClientLastName(order.getClient().getLastName());
 
             List<CartItemDTO> itemDTOs = new ArrayList<>();
-            List<Long> items = order.getCart().getItems();
-            for (Long item : items) {
+            List<Item> items = order.getCart().getItems();
+            for (Item item : items) {
                 CartItemDTO itemDTO = new CartItemDTO();
-                itemDTO.setItemId(item);
+                itemDTO.setItemId(item.getId());
+                itemDTO.setName(item.getName());
+                itemDTO.setPrice(item.getPrice());
                 itemDTOs.add(itemDTO);
                 itemDTO.setOrder(dataDTO);
             }

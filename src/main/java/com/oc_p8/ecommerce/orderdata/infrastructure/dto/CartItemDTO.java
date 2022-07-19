@@ -24,6 +24,12 @@ public class CartItemDTO {
     @Column
     private Long itemId;
 
+    @Column
+    private String name;
+
+    @Column
+    private Double price;
+
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "order_id")
     private OrderDataDTO order;

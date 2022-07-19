@@ -10,7 +10,7 @@ public class OrderSentDTO {
 
     private String clientLastName;
 
-    private List<Long> items;
+    private List<ItemDTO> items;
 
     public Long getId() {
         return this.id;
@@ -36,11 +36,11 @@ public class OrderSentDTO {
         this.clientLastName = clientLastName;
     }
 
-    public List<Long> getItems() {
+    public List<ItemDTO> getItems() {
         return this.items;
     }
 
-    public void setItems(List<Long> items) {
+    public void setItems(List<ItemDTO> items) {
         this.items = items;
     }
 
