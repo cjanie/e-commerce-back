@@ -33,7 +33,6 @@ public class OrderDataQueryGatewayImpl implements OrderDataQueryGateway {
             client.setLastName(dto.getClientLastName());
             order.setClient(client);
 
-            // TODO Cart
             Cart cart = new Cart();
             List<Long> items = new ArrayList<>();
             List<CartItemDTO> itemDTOs = dto.getCartItems();

@@ -26,7 +26,6 @@ public class OrderDataCommandGatewayImpl implements OrderDataCommandGateway {
             dataDTO.setClientFirstName(order.getClient().getFirstName());
             dataDTO.setClientLastName(order.getClient().getLastName());
 
-            // TODO Cart
             List<CartItemDTO> itemDTOs = new ArrayList<>();
             List<Long> items = order.getCart().getItems();
             for (Long item : items) {
@@ -36,8 +35,9 @@ public class OrderDataCommandGatewayImpl implements OrderDataCommandGateway {
                 itemDTO.setOrder(dataDTO);
             }
             dataDTO.setCartItems(itemDTOs);
-            ;
+
             return this.repository.save(dataDTO).getId();
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new PersistanceException(e.getClass() + " " + e.getMessage());

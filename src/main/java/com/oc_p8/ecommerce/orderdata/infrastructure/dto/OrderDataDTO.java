@@ -1,6 +1,5 @@
 package com.oc_p8.ecommerce.orderdata.infrastructure.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,7 +25,6 @@ public class OrderDataDTO {
     @Column
     private String clientLastName;
 
-    // TODO Cart;
     @OneToMany(mappedBy = "order", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<CartItemDTO> cartItems;
 
