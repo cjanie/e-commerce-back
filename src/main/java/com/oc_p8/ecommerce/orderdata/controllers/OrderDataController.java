@@ -53,6 +53,7 @@ public class OrderDataController {
 
         Cart cart = new Cart();
         cart.setItems(orderDTO.getItems());
+        order.setCart(cart);
 
         try {
             return new ResponseEntity<Long>(
