@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.usecases;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.usecases.User;
 
 import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.entities.Catalog;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.gateways.CatalogQueryGateway;

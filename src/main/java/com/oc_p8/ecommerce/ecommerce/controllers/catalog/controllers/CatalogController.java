@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.entities.Catalog;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.usecases.GetCatalogByIdUseCase;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.usecases.User.GetCatalogByIdUseCase;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ecommerce.infrastructure.catalog.adapters.CatalogQueryGatewayImpl;
 import com.oc_p8.ecommerce.ecommerce.infrastructure.catalog.repositories.CatalogRepository;
