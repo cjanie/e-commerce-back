@@ -1,8 +1,8 @@
-package com.oc_p8.ecommerce.ecommerce.businessLogic.admin.usecases;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.shop.usecases;
 
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.entities.Shop;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.gateways.ShopCommandGateway;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.NullPayloadException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.entities.Shop;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.gateways.ShopCommandGateway;
 
 
 public class SaveShopUseCase {

@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ecommerce.businessLogic.admin.entities;
+package com.oc_p8.ecommerce.ecommerce.businessLogic.shop.entities;
 
 public class Shop {
 

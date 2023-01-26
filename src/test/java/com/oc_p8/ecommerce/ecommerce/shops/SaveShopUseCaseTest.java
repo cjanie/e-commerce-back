@@ -1,14 +1,14 @@
-package com.oc_p8.ecommerce.ecommerce.admin;
+package com.oc_p8.ecommerce.ecommerce.shops;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.entities.Shop;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.gateways.ShopCommandGateway;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.usecases.SaveShopUseCase;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.NullPayloadException;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PersistanceException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.entities.Shop;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.gateways.ShopCommandGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.usecases.SaveShopUseCase;
 
 
 
@@ -26,7 +26,7 @@ class InMemoryShopCommandGateway implements ShopCommandGateway {
 public class SaveShopUseCaseTest {
 
     @Test
-    public void returnsTheIdOfTheSavedShop() throws NullPayloadException, PersistanceException {
+    public void returnsTheIdOfTheSavedShop() throws NullPayloadException {
         InMemoryShopCommandGateway shopGateway = new InMemoryShopCommandGateway();
 
         Shop shop = new Shop();

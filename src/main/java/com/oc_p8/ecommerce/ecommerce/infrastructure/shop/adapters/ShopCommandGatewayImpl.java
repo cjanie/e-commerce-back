@@ -1,10 +1,10 @@
-package com.oc_p8.ecommerce.ecommerce.infrastructure.admin.adapters;
+package com.oc_p8.ecommerce.ecommerce.infrastructure.shop.adapters;
 
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.entities.Shop;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.admin.gateways.ShopCommandGateway;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.NullPayloadException;
-import com.oc_p8.ecommerce.ecommerce.infrastructure.admin.dto.ShopDto;
-import com.oc_p8.ecommerce.ecommerce.infrastructure.admin.repositories.ShopRepository;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.entities.Shop;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.gateways.ShopCommandGateway;
+import com.oc_p8.ecommerce.ecommerce.infrastructure.shop.dto.ShopDto;
+import com.oc_p8.ecommerce.ecommerce.infrastructure.shop.repositories.ShopRepository;
 
 public class ShopCommandGatewayImpl implements ShopCommandGateway {
 

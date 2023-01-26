@@ -1,4 +1,4 @@
-package com.oc_p8.ecommerce.ecommerce.infrastructure.admin.dto;
+package com.oc_p8.ecommerce.ecommerce.infrastructure.shop.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
