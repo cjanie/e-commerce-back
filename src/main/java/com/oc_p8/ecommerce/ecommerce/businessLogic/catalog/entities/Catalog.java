@@ -1,16 +1,17 @@
 package com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Catalog {
 
     private Long id;
 
-    private Set<Item> items;
+    private List<Item> items;
 
     public Catalog() {
-        this.items = new HashSet<>();
+        this.items = new ArrayList();
     }
 
     public Long getId() {
@@ -21,11 +22,11 @@ public class Catalog {
         this.id = id;
     }
 
-    public Set<Item> getItems() {
+    public List<Item> getItems() {
         return this.items;
     }
 
-    public void setItems(Set<Item> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 

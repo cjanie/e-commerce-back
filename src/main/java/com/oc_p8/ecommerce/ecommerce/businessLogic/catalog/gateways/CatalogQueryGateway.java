@@ -6,4 +6,7 @@ import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PersistanceExcepti
 public interface CatalogQueryGateway {
 
     Catalog getById(Long id) throws PersistanceException;
+
+    Catalog getByShopId(Long id);
+    
 }

@@ -29,11 +29,19 @@ public class CatalogQueryGatewayImpl implements CatalogQueryGateway {
 
     }
 
+    
+
     private Catalog convertCatalogDtoToEntity(CatalogDTO catalogDTO) {
         Catalog catalog = new Catalog();
         catalog.setId(catalogDTO.getId());
 
         return catalog;
+    }
+
+    @Override
+    public Catalog getByShopId(Long shopId) {
+        CatalogDTO dto = this.catalogRepository.findByShopId(shopId);
+        return null;
     }
 
 }
