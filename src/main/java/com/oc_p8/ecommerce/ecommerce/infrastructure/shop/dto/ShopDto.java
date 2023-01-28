@@ -1,5 +1,7 @@
 package com.oc_p8.ecommerce.ecommerce.infrastructure.shop.dto;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.oc_p8.ecommerce.ecommerce.controllers.catalog.dto.CatalogItemDTO;
 import com.oc_p8.ecommerce.ecommerce.infrastructure.catalog.dto.CatalogDTO;
 
 @Entity(name = "shop")
@@ -25,6 +29,8 @@ public class ShopDto {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "catalog_id", referencedColumnName = "id")
     private CatalogDTO catalog;
+
+
 
 
     public Long getId() {

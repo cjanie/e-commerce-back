@@ -25,6 +25,7 @@ public class ItemCommandGatewayImpl implements ItemCommandGateway {
             CatalogItemDTO itemDTO = new CatalogItemDTO();
             itemDTO.setId(item.getId());
             itemDTO.setName(item.getName());
+            itemDTO.setCatalog(catalogDTO);
 
             return repository.save(itemDTO).getId();
 

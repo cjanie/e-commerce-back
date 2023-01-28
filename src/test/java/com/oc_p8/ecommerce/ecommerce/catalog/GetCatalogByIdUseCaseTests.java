@@ -19,12 +19,6 @@ class InMemoryCatalogQueryGatewayImpl implements CatalogQueryGateway {
         return catalog;
     }
 
-    @Override
-    public Catalog getByShopId(Long id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }
 
 public class GetCatalogByIdUseCaseTests {
