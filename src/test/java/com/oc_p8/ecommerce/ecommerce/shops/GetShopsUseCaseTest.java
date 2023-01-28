@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.entities.Shop;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.gateways.ShopQueryGateway;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.shop.usecases.GetShopsUseCase;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.entities.Shop;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.gateways.ShopQueryGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.usecases.GetShopsUseCase;
 
 class InMemoryShopQueryGateway implements ShopQueryGateway {
 

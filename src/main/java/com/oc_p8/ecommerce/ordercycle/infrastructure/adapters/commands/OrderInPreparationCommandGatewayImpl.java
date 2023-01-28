@@ -3,7 +3,7 @@ package com.oc_p8.ecommerce.ordercycle.infrastructure.adapters.commands;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.entities.OrderInPreparation;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.commands.OrderInPreparationCommandGateway;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderCommandDTO;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.dto.OrderCommandDTO;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.repositories.OrderCommandRepository;
 
 public class OrderInPreparationCommandGatewayImpl implements OrderInPreparationCommandGateway {

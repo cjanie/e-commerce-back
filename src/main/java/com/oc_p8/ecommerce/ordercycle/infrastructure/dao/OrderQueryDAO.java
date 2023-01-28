@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.dto.OrderQueryDTO;
 
 public class OrderQueryDAO {
 

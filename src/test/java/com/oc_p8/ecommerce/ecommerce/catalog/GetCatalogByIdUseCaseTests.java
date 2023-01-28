@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.entities.Catalog;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.gateways.CatalogQueryGateway;
-import com.oc_p8.ecommerce.ecommerce.businessLogic.catalog.usecases.User.GetCatalogByIdUseCase;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.entities.Catalog;
 import com.oc_p8.ecommerce.ecommerce.businessLogic.exceptions.PersistanceException;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.gateways.CatalogQueryGateway;
+import com.oc_p8.ecommerce.ecommerce.businessLogic.usecases.GetCatalogByIdUseCase;
 
 class InMemoryCatalogQueryGatewayImpl implements CatalogQueryGateway {
 

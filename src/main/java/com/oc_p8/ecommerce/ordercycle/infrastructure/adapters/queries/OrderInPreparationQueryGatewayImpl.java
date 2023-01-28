@@ -8,7 +8,7 @@ import com.oc_p8.ecommerce.ordercycle.businesslogic.enums.OrderState;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.exceptions.PersistanceException;
 import com.oc_p8.ecommerce.ordercycle.businesslogic.gateways.queries.OrderInPreparationQueryGateway;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.dao.OrderQueryDAO;
-import com.oc_p8.ecommerce.ordercycle.infrastructure.entities.OrderQueryDTO;
+import com.oc_p8.ecommerce.ordercycle.infrastructure.dto.OrderQueryDTO;
 import com.oc_p8.ecommerce.ordercycle.infrastructure.factories.VisitorOrderFactory;
 
 public class OrderInPreparationQueryGatewayImpl implements OrderInPreparationQueryGateway {
